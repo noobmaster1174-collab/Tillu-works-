@@ -1,80 +1,58 @@
 import { motion } from 'framer-motion';
-import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import ProductCard from '../components/ProductCard';
 
 export default function Products() {
   return (
-    <div className="min-h-screen bg-[#FAF9F6]">
-      {/* Hero */}
-      <section className="bg-[#1A1A1A] pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" style={{
-          backgroundImage: 'linear-gradient(#FF6B00 1px, transparent 1px), linear-gradient(90deg, #FF6B00 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#FF6B00]/10 blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block px-4 py-1.5 bg-[#FF6B00]/20 rounded-full text-[#FF6B00] font-dm text-sm font-medium mb-4">
-              Our Products
-            </span>
-            <h1 className="font-syne font-black text-white text-4xl md:text-5xl lg:text-6xl mb-5">
-              Custom <span className="gradient-text">Printing</span> Solutions
-            </h1>
-            <p className="text-white/60 font-dm text-lg max-w-2xl mx-auto mb-8">
-              Premium quality custom merchandise for your brand. From ID cards to corporate gifts — we've got you covered.
-            </p>
-            <Link
-              to="/quote"
-              className="btn-press inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#FF6B00] to-[#FFD700] text-white font-syne font-bold rounded-2xl shadow-xl hover:shadow-[#FF6B00]/40 transition-all"
+    <div className="min-h-screen bg-bg">
+      <section className="bg-secondary pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-primary/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
+        <div className="container-custom relative z-10 text-center">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
             >
-              Get Bulk Quote <ArrowRight size={18} />
-            </Link>
-          </motion.div>
+              <h1 className="text-4xl md:text-6xl font-black text-white mb-6">Explore Our <span className="text-primary">Products</span>.</h1>
+              <p className="text-white/60 text-lg max-w-xl mx-auto font-medium">Browse our range of high-quality custom printing solutions designed to make your brand stand out.</p>
+            </motion.div>
         </div>
       </section>
 
-      {/* Products grid */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <ProductCard {...product} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-16 bg-[#F0EDE6]">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-syne font-bold text-[#1A1A1A] text-2xl md:text-3xl mb-3">
-              Need Something <span className="gradient-text">Custom?</span>
-            </h2>
-            <p className="text-[#6B7280] font-dm mb-6">
-              Don't see what you're looking for? We handle custom bulk orders too. Contact us and we'll make it happen!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/quote" className="btn-press px-7 py-3.5 bg-gradient-to-r from-[#FF6B00] to-[#FFD700] text-white font-syne font-bold rounded-2xl shadow-lg">
-                Request Custom Quote
-              </Link>
-              <Link to="/contact" className="btn-press px-7 py-3.5 border-2 border-[#1A1A1A] text-[#1A1A1A] font-syne font-bold rounded-2xl hover:bg-[#1A1A1A] hover:text-white transition-all">
-                Contact Us
-              </Link>
+      {/* CTA Box */}
+      <section className="pb-24">
+        <div className="container-custom">
+          <div className="p-12 md:p-16 rounded-[40px] bg-surface border border-border flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+              <h2 className="text-3xl font-black mb-4">Don't see what you need?</h2>
+              <p className="text-muted font-medium">We offer fully custom printing services for unique requirements. Speak to our team.</p>
             </div>
-          </motion.div>
+            <div className="flex gap-4 w-full md:w-auto">
+               <a href="tel:+919999999999" className="btn-outline flex-1 md:flex-none">Call Us</a>
+               <Link to="/contact" className="btn-primary flex-1 md:flex-none">Contact Us</Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
   );
 }
+
+import { Link } from 'react-router-dom';

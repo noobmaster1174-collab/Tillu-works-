@@ -27,6 +27,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.db
+*.sqlite3
 
 # Docker
 .docker
@@ -41,6 +43,10 @@ lerna-debug.log*
 # Node
 node_modules/
 dist/
+
+# User Uploads
+backend/uploads/
+uploads/
 
 # OS
 .DS_Store

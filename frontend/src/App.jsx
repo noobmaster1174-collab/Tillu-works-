@@ -10,6 +10,7 @@ import Gallery from './pages/Gallery';
 import Quote from './pages/Quote';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Orders from './pages/Orders';
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
       <Toaster
         position="top-right"
         toastOptions={{
-          style: { fontFamily: 'DM Sans, sans-serif', borderRadius: '12px', fontSize: '14px' },
+          style: { fontFamily: 'Poppins, sans-serif', borderRadius: '16px', fontSize: '14px', fontWeight: '500' },
           success: { iconTheme: { primary: '#FF6B00', secondary: '#fff' } },
         }}
       />
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/quote" element={<Quote />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </main>
       <Footer />

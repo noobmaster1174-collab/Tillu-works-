@@ -16,4 +16,6 @@ class Quote(Base):
     quantities = Column(JSON, nullable=True)      # dict {product_id: qty}
     requirements = Column(Text, nullable=True)
     file_path = Column(String(500), nullable=True)
+    status = Column(String(50), default="pending") # pending, processing, printing, shipped, delivered
+    tracking_id = Column(String(100), unique=True, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

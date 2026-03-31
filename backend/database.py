@@ -7,9 +7,12 @@ import os
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://tillu:tillu123@localhost:5432/tilluworks")
+# We use SQLite since PostgreSQL / Docker isn't available
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./tilluworks.db")
 
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+engine = create_engine(
+    DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
