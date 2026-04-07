@@ -36,7 +36,7 @@ export default function ProductCard({ id, name, description, category, price, ic
           </div>
           
           <Link 
-            to={`/quote?product=${id}`}
+            to={id === 'id-cards' ? '/product/id-cards' : `/quote?product=${id}`}
             className="w-12 h-12 rounded-2xl bg-secondary text-white flex items-center justify-center hover:bg-primary transition-all duration-300 shadow-lg group-hover:rotate-12"
           >
             <ChevronRight size={20} />

@@ -11,7 +11,8 @@ from database import engine, Base
 import models.quote  # noqa
 import models.contact  # noqa
 
-from routes import quote, contact, products
+from routes import quote, contact, products, admin
+
 
 
 @asynccontextmanager
@@ -47,6 +48,8 @@ app.add_middleware(
 app.include_router(quote.router, prefix="/api", tags=["Quote"])
 app.include_router(contact.router, prefix="/api", tags=["Contact"])
 app.include_router(products.router, prefix="/api", tags=["Products"])
+app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])
+
 
 
 @app.get("/api/health", tags=["Health"])

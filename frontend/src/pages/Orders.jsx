@@ -114,12 +114,13 @@ export default function Orders() {
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                              <div className="md:col-span-2">
                                 <span className="text-muted font-black text-[10px] uppercase tracking-widest block mb-4">Delivery Overview</span>
-                                <div className="relative h-2 bg-surface rounded-full overflow-hidden">
+                                 <div className="relative h-2 bg-surface rounded-full overflow-hidden">
                                    <div 
                                      className="absolute top-0 left-0 h-full bg-primary transition-all duration-1000" 
                                      style={{ width: 
                                        order.status === 'pending' ? '10%' : 
                                        order.status === 'processing' ? '30%' : 
+                                       order.status === 'finished' ? '50%' : 
                                        order.status === 'printing' ? '60%' : 
                                        order.status === 'shipped' ? '85%' : '100%' 
                                      }} 
@@ -127,7 +128,8 @@ export default function Orders() {
                                 </div>
                                 <div className="flex justify-between mt-4 text-[10px] font-black uppercase text-muted tracking-tighter">
                                    <span>Ordered</span>
-                                   <span>In Print</span>
+                                   <span>Processing</span>
+                                   <span>Finished</span>
                                    <span>Shipped</span>
                                    <span>Arrived</span>
                                 </div>
