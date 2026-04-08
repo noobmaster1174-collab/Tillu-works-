@@ -102,8 +102,12 @@ export default function Quote() {
         fd.append('metadata_info', JSON.stringify(metadata));
         fd.append('total_price', cartTotal);
 
-        if (cart[0].design_file) fd.append('design_file', cart[0].design_file);
-        if (cart[0].data_file) fd.append('data_file', cart[0].data_file);
+        if (cart[0].design_file && (cart[0].design_file instanceof File || cart[0].design_file instanceof Blob)) {
+          fd.append('design_file', cart[0].design_file);
+        }
+        if (cart[0].data_file && (cart[0].data_file instanceof File || cart[0].data_file instanceof Blob)) {
+          fd.append('data_file', cart[0].data_file);
+        }
       } else {
         // Generic Quote Submission
         fd.append('products', JSON.stringify(formData.selectedProducts));

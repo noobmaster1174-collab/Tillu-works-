@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, Package, RefreshCw, ChevronDown, ChevronUp, AlertCircle, FileText } from 'lucide-react';
+import { ShieldCheck, Package, RefreshCw, ChevronDown, ChevronUp, AlertCircle, FileText, ChevronRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function AdminDashboard() {

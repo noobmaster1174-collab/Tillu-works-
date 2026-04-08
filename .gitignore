@@ -35,6 +35,8 @@ wheels/
 
 # Logs
 *.log
+output.txt
+backend/output.txt
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
